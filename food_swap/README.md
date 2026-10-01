@@ -1,254 +1,308 @@
-FoodSwap
+# FoodSwap
 
-Make a better food choice.
+FoodSwap is a Flutter application that helps users make better decisions when choosing packaged foods.
 
-FoodSwap is a Flutter mobile application that helps users make better decisions when choosing packaged foods. Instead of simply displaying nutritional information, FoodSwap converts that information into an easy-to-understand FoodSwap Score and recommends better alternatives.
+Instead of simply displaying nutritional information, FoodSwap converts product nutrition data into an easy-to-understand FoodSwap Score and helps users discover better alternatives.
 
-The application uses the Open Food Facts API to retrieve product information and allows users to compare products based on nutritional values and Nutri-Score.
+The application uses the Open Food Facts API for product and nutritional information.
 
-Features
-🔍 Food Search
-Search for packaged food products using the Open Food Facts database.
-📊 FoodSwap Score
-Converts nutritional information into a simple score out of 100 to make product comparison easier.
-🥗 Better Swaps
-Find alternative products with better nutritional characteristics.
-⚖️ Product Comparison
-Compare the current product with alternatives using:
-FoodSwap Score
-Protein
-Sugar
-Nutri-Score
-Other nutritional information
-🏷️ Nutri-Score
-Displays the product's Nutri-Score from A to E.
-📋 Product Details
-View detailed nutritional information including:
-Calories
-Protein
-Carbohydrates
-Sugar
-Fat
-Saturated fat
-Salt
-🔎 Filtering & Sorting
-FoodSwap Score
-Product category
-Nutri-Score
-⚡ Loading & Skeleton States
-Provides visual feedback while product data is being loaded.
-❌ Error Handling
-Handles API failures, unavailable results and other network-related errors gracefully.
-💾 Caching / Offline Support
-Previously retrieved product information can be accessed through local caching when network connectivity is unavailable.
-🌙 Dark & Light Themes
-The application supports both dark and light themes.
-📱 Responsive UI
-The interface adapts to different screen sizes and orientations.
-ℹ️ In-App Information
-Explains the FoodSwap Score and Nutri-Score system to users.
-How FoodSwap Works
+---
 
-The basic flow of the application is:
+## Features
 
-User searches for a food
-        ↓
-Open Food Facts API
-        ↓
-Product information retrieved
-        ↓
-Nutrition data processed
-        ↓
-FoodSwap Score calculated
-        ↓
-Products displayed
-        ↓
-User selects a product
-        ↓
-Better alternatives identified
-        ↓
-Products compared
-FoodSwap Score
+- Food search using the Open Food Facts API
+- FoodSwap Score out of 100
+- Nutri-Score display (A to E)
+- Product details and nutritional information
+- Better food recommendations
+- Product comparison
+- Protein, sugar and other nutrition comparisons
+- Product filtering by category
+- Sorting by FoodSwap Score
+- Filtering by Nutri-Score
+- Loading and skeleton states
+- API and network error handling
+- Product caching for offline/reduced-network usage
+- Light and dark themes
+- Responsive layout for different screen sizes and orientations
+- In-app information explaining FoodSwap Score and Nutri-Score
 
-The FoodSwap Score is a simplified score designed to help users compare packaged foods more easily.
+---
 
-Instead of requiring users to interpret multiple nutritional values independently, FoodSwap combines relevant nutritional information into a score between:
+## How It Works
 
-0 ─────────────────────── 100
-Poor                    Better
+The application follows this general flow:
 
-A higher score represents a relatively better nutritional profile according to the scoring criteria implemented in the application.
+1. The user searches for a packaged food.
+2. FoodSwap sends the search request to the Open Food Facts API.
+3. Product information is retrieved.
+4. The application processes the nutritional information.
+5. A FoodSwap Score is calculated.
+6. Matching products are displayed.
+7. The user can open a product to view detailed nutritional information.
+8. FoodSwap can find alternative products with better nutritional characteristics.
+9. The alternatives are presented with a comparison of important metrics.
 
-The score is intended as a comparison tool, rather than a medical or dietary recommendation.
+---
 
-Nutri-Score
+## FoodSwap Score
 
-FoodSwap also displays the Nutri-Score provided by the Open Food Facts data.
+FoodSwap Score is a simplified scoring system designed to make food comparison easier.
 
-The Nutri-Score scale is:
+The score ranges from 0 to 100.
 
-A → Better nutritional profile
-B
-C
-D
-E → Less favorable nutritional profile
+- A higher score represents a relatively better nutritional profile.
+- A lower score represents a relatively less favorable nutritional profile.
 
-FoodSwap uses this information alongside its own scoring system when presenting product comparisons.
+The score is intended as a comparison and decision-support tool. It is not a medical or dietary recommendation.
 
-Architecture
+---
 
-FoodSwap follows a layered Flutter architecture:
+## Nutri-Score
 
-┌─────────────────────────────┐
-│          UI / Screens       │
-│                             │
-│ Home • Product Details      │
-│ Better Swaps                │
-└──────────────┬──────────────┘
-               │
-               ↓
-┌─────────────────────────────┐
-│          Providers          │
-│                             │
-│ State Management            │
-└──────────────┬──────────────┘
-               │
-               ↓
-┌─────────────────────────────┐
-│        Repositories         │
-│                             │
-│ Data access & coordination  │
-└──────────────┬──────────────┘
-               │
-               ↓
-┌─────────────────────────────┐
-│          Services           │
-│                             │
-│ API • Caching • Filtering   │
-│ Recommendation • Sorting    │
-└──────────────┬──────────────┘
-               │
-               ↓
-┌─────────────────────────────┐
-│     Open Food Facts API     │
-└─────────────────────────────┘
-Main project structure
+FoodSwap also displays the Nutri-Score provided through the Open Food Facts product data.
+
+The Nutri-Score uses five categories:
+
+- A - Better nutritional profile
+- B
+- C
+- D
+- E - Less favorable nutritional profile
+
+FoodSwap uses Nutri-Score together with its own FoodSwap Score when comparing products.
+
+---
+
+## Better Swaps
+
+The Better Swaps feature helps users find alternative products that may have a better nutritional profile than the selected product.
+
+Alternatives are compared using metrics such as:
+
+- FoodSwap Score
+- Protein
+- Sugar
+- Nutri-Score
+
+The comparison screen also explains why an alternative is considered better.
+
+---
+
+## Product Details
+
+The product details screen provides information such as:
+
+- Product name
+- Brand
+- Product image
+- FoodSwap Score
+- Nutri-Score
+- Calories
+- Protein
+- Carbohydrates
+- Sugar
+- Fat
+- Saturated fat
+- Salt
+
+---
+
+## Filtering and Sorting
+
+Search results can be organized using:
+
+- FoodSwap Score
+- Product category
+- Nutri-Score
+
+This allows users to narrow down products according to their preferences.
+
+---
+
+## Caching and Offline Support
+
+FoodSwap uses local product caching to reduce unnecessary API requests and provide access to previously retrieved product information.
+
+When network connectivity is unavailable, cached information can be used where applicable.
+
+This also helps improve the responsiveness of the application for previously accessed products.
+
+---
+
+## Error Handling
+
+The application provides user-friendly states for common problems such as:
+
+- Network connectivity problems
+- API errors
+- Product search failures
+- Similar-product search failures
+- Empty search results
+- Missing product information
+
+Loading and skeleton states are also provided while data is being retrieved.
+
+---
+
+## Dark and Light Themes
+
+FoodSwap supports both dark and light themes.
+
+The interface has been designed to maintain consistent colors, typography and readability across the application's main screens.
+
+---
+
+## Responsive Design
+
+The application is designed to work across different screen sizes and orientations.
+
+The UI adapts to:
+
+- Portrait orientation
+- Landscape orientation
+- Different device screen sizes
+
+---
+
+## Architecture
+
+FoodSwap follows a layered Flutter architecture.
+
+### UI Layer
+
+Responsible for displaying the application interface and handling user interaction.
+
+Main screens include:
+
+- Home Screen
+- Product Details
+- Better Swaps
+
+### Provider Layer
+
+Responsible for application state management and connecting the UI with the underlying data layers.
+
+### Repository Layer
+
+Responsible for coordinating data access between the application and services.
+
+### Service Layer
+
+Contains the main application services, including:
+
+- Open Food Facts API communication
+- Product caching
+- Product filtering and sorting
+- Food recommendation logic
+
+### Data Flow
+
+The overall data flow is:
+
+UI -> Providers -> Repositories -> Services -> Open Food Facts API
+
+---
+
+## Project Structure
+
+```text
 lib/
 ├── models/
+│
 ├── providers/
+│
 ├── repositories/
 │   └── food_repository.dart
+│
 ├── screens/
 │   ├── home_screen.dart
 │   ├── better_swaps_screen.dart
 │   └── product_details.dart
+│
 ├── services/
 │   ├── openfood_service.dart
 │   ├── product_cache.dart
 │   ├── product_filter_sort_service.dart
 │   └── recommendation_service.dart
+│
 └── main.dart
-Tech Stack
-Technology	Purpose
-Flutter	Cross-platform application development
-Dart	Application programming language
-Open Food Facts API	Product and nutritional data
-Riverpod	State management
-HTTP	API communication
-Local caching	Offline/reduced-network dependency
-Flutter testing	Automated application testing
+```
+### Technologies Used
+Flutter
+Dart
+Riverpod
+Open Food Facts API
+HTTP
+Local caching
+Flutter testing
 API
 
-FoodSwap uses the Open Food Facts API to retrieve publicly available product information such as:
+FoodSwap uses the Open Food Facts API to retrieve publicly available product information.
+
+## The application uses data such as:
 
 Product name
 Brand
 Product image
 Categories
+Product identifier
 Nutritional values
 Nutri-Score
-Product identifier
 
-The application processes the retrieved data before presenting it to the user.
+The retrieved data is processed by the application before being presented to the user.
 
-Error Handling
-
-FoodSwap provides user-facing states for situations such as:
-
-Network unavailable
-API errors
-Product search failure
-Similar-product search failure
-Empty search results
-Unavailable product information
-
-Previously cached information can also be used where applicable.
-
-Testing
-
-The project can be analyzed and tested using Flutter's standard tools.
-
-Static analysis
-flutter analyze
-Automated tests
-flutter test
-Run the application
-flutter run
-Installation
+Getting Started
 Prerequisites
 
-Install:
+### Make sure the following are installed:
 
 Flutter SDK
 Dart SDK
 Android Studio / Android SDK
-A connected Android device or emulator
-Setup
-
-Clone the repository:
-
+Android emulator or physical Android device
+Clone the Repository
 git clone https://github.com/YOUR_USERNAME/food-swap-flutter.git
-
-Navigate to the project:
-
+Navigate to the Project
 cd food-swap-flutter
-
-Install dependencies:
-
+Install Dependencies
 flutter pub get
-
-Run the application:
-
+Run the Application
 flutter run
+Running Tests
+
+Run static analysis:
+
+flutter analyze
+
+Run automated tests:
+
+flutter test
 Building the APK
 
-To generate a release APK:
+To create a release APK:
 
 flutter build apk --release
 
-The generated APK can be found at:
+The generated APK will be available at:
 
 build/app/outputs/flutter-apk/app-release.apk
-Project Goals
-
-FoodSwap was designed around a simple idea:
-
-Turn nutritional information into an actionable food decision.
-
-Rather than forcing users to interpret complicated nutrition tables, the application presents product information through scores, comparisons and alternative recommendations.
-
 Future Improvements
 
-Potential future improvements include:
+### Possible future improvements include:
 
 Barcode scanning
 Personalized dietary preferences
-Vegetarian / vegan filtering
 Allergen-based filtering
-More advanced recommendation algorithms
-Expanded offline capabilities
+Vegetarian and vegan filtering
+More advanced food recommendation algorithms
+Expanded offline functionality
 User accounts and personalized food history
-More detailed nutritional insights
-License
+Additional nutritional insights
+Project Purpose
 
-This project is developed for educational and demonstration purposes.
+### FoodSwap was developed around a simple goal:
+
+Make nutritional information easier to understand and turn it into a practical food choice.
+
+Instead of requiring users to interpret multiple nutritional values independently, FoodSwap presents product information through scores, comparisons and alternative recommendations.
