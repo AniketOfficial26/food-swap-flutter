@@ -262,7 +262,7 @@ Dart SDK
 Android Studio / Android SDK
 Android emulator or physical Android device
 Clone the Repository
-git clone https://github.com/YOUR_USERNAME/food-swap-flutter.git
+git clone https://github.com/AniketOfficial26/food-swap-flutter.git
 Navigate to the Project
 cd food-swap-flutter
 Install Dependencies
